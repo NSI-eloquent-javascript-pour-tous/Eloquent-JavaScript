@@ -31,6 +31,13 @@ quote}}
 
 {{index "program size"}}
 
+Un long programme est un programme coûteux, et pas seulement à cause du
+temps qu'il faut pour le mettre au point. La longueur entraîne presque
+toujours de la ((complexité)), et la complexité rend les programmeurs confus.
+Ces programmeurs confus, à leur tour, introduisent des erreurs (_((bug))s_) 
+dans les programmes. Un long programme fournit beaucoup d'espace pour permettre
+à ses erreur ou bugs de se cacher, ce qui les rend difficile à dénicher.
+
 A large program is a costly program, and not just because of the time
 it takes to build. Size almost always involves ((complexity)), and
 complexity confuses programmers. Confused programmers, in turn,
