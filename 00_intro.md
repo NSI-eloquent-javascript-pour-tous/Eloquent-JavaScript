@@ -30,15 +30,15 @@ est fondamentalement fastidieuse et frustrante.
 {{index [programming, "joy of"], speed}}
 
 Heureusement, si vous pouvez surmonter cela, et peut-être même apprécier la rigueur
-d'une réflexion sur ce que peuvent faire ces machines sans cervelles, la programmation peut être
+d'une réflexion sur ce que peuvent faire ces machines sans cervelle, la programmation peut être
 enrichissante. Cela vous permet de faire des choses en quelques secondes qui
 prendraient une _éternité_ à la main. C'est un moyen de faire en sorte que votre machine
 fasse des choses qu'elle ne pouvait pas faire auparavant. Et cela fournit un
 excellent exercice d'abstraction de la pensée.
 
 La plupart des programmes sont réalisés avec des ((langages de programmation)). Un
-_langage de programmation_ est un langage construit artificiellement dans le but d'
-instruire les machines. Il est intéressant de noter que le moyen le plus efficace que
+_langage de programmation_ est un langage construit artificiellement dans le but
+d'instruire les machines. Il est intéressant de noter que le moyen le plus efficace que
 nous ayons trouvé pour communiquer avec un ordinateur emprunte énormément à la
 façon dont nous communiquons les uns avec les autres. A l'instar des langages
 humains, les langages informatiques permettent de combiner des mots et des phrases
@@ -72,7 +72,7 @@ vous y perdre.
 
 {{index learning}}
 
-Il y aura des moments où la lecture de ce livre risque de vous frustrez. Si vous débutez
+Il y aura des moments où la lecture de ce livre risque de vous frustrer. Si vous débutez
 en programmation, il y aura beaucoup de nouvelles notions à assimiler.
 Une grande partie de ces notions seront ensuite réinvesties de façon à vous permettre d'apprendre
 à les _combiner_ pour atteindre tel ou tel but.
@@ -80,7 +80,7 @@ Une grande partie de ces notions seront ensuite réinvesties de façon à vous p
 C'est à vous de faire l'effort nécessaire. Lorsque vous aurez du mal
 à suivre le livre, ne vous blâmez pas, ne vous découragez pas. Tout va bien,
 vous avez juste besoin de reprendre un peu les choses.
-Faites une pause puis relisez tranquillement la partie qui vous a donnée du mal
+Faites une pause puis relisez tranquillement la partie qui vous a donné du mal
 en vous assurant de bien comprendre les exemples de programmes et les exercices
 correspondants. Apprendre est une chose difficile, mais tout ce qu'on apprend
 nous appartient et facilite nos apprentissages ultérieurs.
@@ -101,10 +101,10 @@ programmeur, c'est la force directrice qui indique à l'ordinateur ce qu'il doit
 sont des données dans sa mémoire ainsi que les actions qu'il réalise sur celles-ci.
 Les analogies qui tendent à comparer les programmes à des objets qui nous sont familiers
 ne tiennent pas longtemps. Un rapprochement rapide peut toutefois être fait avec une machine
-imaginaire—formée de nombreux rouages entremélés dont les relations mutuelles
+imaginaire—formée de nombreux rouages entremêlés dont les relations mutuelles
 doivent être maîtrisées pour réussir à animer le tout harmonieusement.
 
-Un ((ordinateur)) est une machine physique conçu pour héberger ce genre de machines imaginaires.
+Un ((ordinateur)) est une machine physique conçue pour héberger ce genre de machines imaginaires.
 Par lui-même, un ordinateur ne peut faire que des choses simplissimes. La raison
 pour laquelle ils sont si utiles est qu’ils les font à une ((vitesse)) incroyablement
 élevée. Un programme peut ingénieusement articuler un nombre énorme de ces
@@ -125,7 +125,7 @@ programme de grande qualité reste en retrait, sa complexité s'efface sous une 
 
 Certains programmeurs croient qu'il suffit de se limiter à quelques techniques
 bien comprises pour maîtriser cette complexité. Ils élaborent des règles strictes
-(«meilleures pratiques») sur la forme qu'un programme devrait avoir et se retranche
+(«meilleures pratiques») sur la forme qu'un programme devrait avoir et se retranchent
 dans leur petite zone de sécurité.
 
 {{index experiment}}
@@ -221,7 +221,7 @@ et `compteur` conserve le nombre courant. Les lignes qui utilisent
 `comparaison` sont probablement les plus bizarres. Ce que le programme
 cherche à savoir c’est si `compteur` est égal à 11, de manière à savoir
 s’il doit interrompre le calcul. Comme la machine est très rudimentaire,
-il peut seulement tester si un nombre est zéro, et prendre une décision (sauter)
+il peut seulement tester si un nombre est zéro, et prendre une décision (celle de sauter)
 basée sur ce critère. Il utilise donc l’adresse mémoire nommée `comparaison`
 pour calculer la valeur de `compteur` - 11, et décide suivant la valeur obtenue.
 Les deux lignes suivantes ajoutent la valeur de `compteur` au résultat,
@@ -334,25 +334,25 @@ dans vos programmes, parce que le système ne vous les montrera pas.
 Toutefois, la souplesse de ce langage est aussi un avantage. Elle laisse
 la place à de nombreuses techniques que les langages de programmation
 plus rigides ne permettent pas. Et, comme vous le verrez (par exemple
-dans le [chapitre ?](modules), on peut l’utiliser pour compenser
+dans le [chapitre ?](modules)), on peut l’utiliser pour compenser
 certains défauts de JavaScript. Après l’avoir étudié correctement et
 avoir travaillé avec un certain temps, j’ai vraiment appris à _apprécier_ JavaScript.
 
 {{index future, [JavaScript, "versions of"], ECMAScript, "ECMAScript 6"}}
 
 Il y a eu plusieurs versions de JavaScript. La version 3 d'ECMAScript a marqué
-l’époque de l'ascention de JavaScript, entre 2000 et 2010 à peu près.
+l’époque de l'ascension de JavaScript, entre 2000 et 2010 à peu près.
 À cette époque, une ambitieuse version 4 était en cours d’élaboration et
 prévoyait un grand nombre d'avancées radicales et d’extensions du langage.
-Mais modifier un langage si largement utilisée et de façon aussi radicale était
+Mais modifier un langage si largement utilisé et de façon aussi radicale était
 politiquement incorrect à tel point que la version 4 fut finalement abandonnée en 2008
-au profit d'une version 5 - apparut en 2009 - beaucoup moins ambitieuse et qui n'apportait
+au profit d'une version 5 - apparue en 2009 - beaucoup moins ambitieuse et qui n'apportait
 que quelques améliorations non controversées.
 Il fallut attendre 2015 pour que s'installe la version 6,
 une mise à jour majeure incluant certaines des idées prévues pour la version 4.
 Depuis lors, le langage est régulièrement mis à jour, chaque année, par petites touches.
 
-L'évolution continuelle du langage oblige les navigateurs à suivre en permanence
+L'évolution continuelle du langage oblige les navigateurs à la suivre en permanence,
 et l'utilisation d'un navigateur plus ancien ne vous permettra pas d'utiliser ses
 dernières fonctionnalités. Les concepteurs du langage veillent à ne pas introduire
 des changements qui empêcheraient des programmes plus anciens de fonctionner correctement
@@ -365,7 +365,7 @@ Les navigateurs Web ne sont pas les seules plateformes sur lesquelles JavaScript
 utilisé. Certaines bases de données, telles que MongoDB et CouchDB, utilisent
 JavaScript comme langage de script et de requête. Plusieurs plateformes de
 programmation pour postes de travail et serveurs,
-notamment le projet Node.js (sujet du [Chapitre ?](node),
+notamment le projet Node.js (sujet du [chapitre ?](node)),
 fournissent un environnement permettant de programmer en JavaScript en dehors du navigateur.
 
 ## Interagir et expérimenter avec le code
@@ -417,7 +417,7 @@ Si vous souhaitez exécuter les programmes donnés dans ce livre en dehors de so
 Web, vous devrez prendre certaines précautions. De nombreux exemples sont
 indépendants et devraient fonctionner dans n'importe quel environnement JavaScript.
 Toutefois, le code des derniers chapitres est souvent écrit pour un environnement
-spécifique (le navigateur ou Node.js) et il ne peut être exécuté qu’à cet endroit. En
+spécifique (le navigateur ou Node.js) et il ne peut être exécuté qu’à cet endroit du livre. En
 outre, de nombreux chapitres définissent des programmes plus volumineux et les
 éléments de code qui y figurent dépendent les uns des autres ou de fichiers externes.
 Le [bac à sable](https://eloquentjavascript.net/code) du site Web fournit des liens vers des fichiers Zip contenant tous les scripts et fichiers de données nécessaires
@@ -431,7 +431,7 @@ dont JavaScript est utilisé pour les programmer. Enfin, deux chapitres sont con
 à ((Node.js)), un autre environnement qui permet de programmer en JavaScript.
 
 Le livre contient cinq chapitres consacrés à des projets.
-Cela vous permettra d'avoir un avant goût de la programmation appliquée à des situations concrêtes.
+Cela vous permettra d'avoir un avant-goût de la programmation appliquée à des situations concrètes.
 Nous y construirons successivement un [robot de distribution](robot), un [langage de
 programmation](language), un [jeu de plateforme](game), un programme de [dessin pixellisé](paint) et un [site Web dynamique](skillsharing).
 
@@ -440,7 +440,7 @@ qui présentent les constructions de base de JavaScript.
 Ils introduisent les [structures de contrôle](program_structure)
 (comme le mot `while` déjà rencontré plus tôt),
 les [fonctions](functions) (pour l'écriture de vos propres blocs de construction) et
-des [structures de données](data). Après cela, vous serrez en mesure
+des [structures de données](data). Après cela, vous serez en mesure
 d'écrire des programmes de base.
 Les chapitres [?](higher_order) et [?](object) présentent ensuite des techniques permettant
 d’utiliser les fonctions et les objets pour écrire un
@@ -471,9 +471,9 @@ if}}
 
 {{index "factorial function"}}
 
-Dans ce livre, les portions de texte écrits dans une police à chasse fixe - comme `monospace` -
+Dans ce livre, les portions de texte écrites dans une police à chasse fixe - comme `monospace` -
 représenteront des éléments de programmes—Ce seront tantôt des fragments
-autosuffisants, tantôt de simple référence à une partie d'un programme situé à 
+autosuffisants, tantôt de simples références à une partie d'un programme situé à 
 proximité.
 Les programmes (vous en avez déjà vu quelques-uns) ont l'allure suivante:
 
