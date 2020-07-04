@@ -1,7 +1,7 @@
 | Chapitre                               | Traducteur 1 | Traducteur 2 |
 |----------------------------------------|--------------|--------------|
-| 0. Introduction                        | efloti - 50%   |              |
-| 1. Values, Types, and Operators        |              |              |
+| 0. Introduction                        | efloti - fait   |              |
+| 1. Values, Types, and Operators        | efloti          |              |
 | 2. Program Structure                   |              |              |
 | 3. Functions                           |              |              |
 | 4. Data Structures: Objects and Arrays |              |              |
