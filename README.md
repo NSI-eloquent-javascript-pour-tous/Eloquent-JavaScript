@@ -1,10 +1,10 @@
 | Chapitre                               | Traducteur 1 | Traducteur 2 |
 |----------------------------------------|--------------|--------------|
 | 0. Introduction                        | efloti - fait   |              |
-| 1. Values, Types, and Operators        | efloti          |              |
+| 1. Values, Types, and Operators        | efloti - fait          |              |
 | 2. Program Structure                   |              |              |
 | 3. Functions                           |              |              |
-| 4. Data Structures: Objects and Arrays |              |              |
+| 4. Data Structures: Objects and Arrays | efloti             |              |
 | 5. Higher-order Functions              | efloti - fait  |              |
 | 6. The Secret Life of Objects          |              |              |
 | 7. Project: A Robot                    |              |              |
