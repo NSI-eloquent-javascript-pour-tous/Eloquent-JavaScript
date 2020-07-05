@@ -1,6 +1,6 @@
 {{meta {docid: values}}}
 
-# Values, Types, and Operators
+# Valeurs, Types et Opérateurs
 
 {{quote {author: "Master Yuan-Ma", title: "The Book of Programming", chapter: true}
 
@@ -17,74 +17,74 @@ quote}}
 
 {{index "binary data", data, bit, memory}}
 
-Inside the computer's world, there is only data. You can read data,
-modify data, create new data—but that which isn't data cannot be
-mentioned. All this data is stored as long sequences of bits and is
-thus fundamentally alike.
+Dans le monde des ordinateurs, il n'y a que des données. Les données
+peuvent être lues, modifiées ou créées—Mais, dans ce monde, il est impossible de se référer
+à autre chose qu'une donnée. Toutes ces données sont stockées
+sous la forme de longs motifs de bits, elles sont donc fondamentalent semblables.
 
 {{index CD, signal}}
 
-_Bits_ are any kind of two-valued things, usually described as zeros and
-ones. Inside the computer, they take forms such as a high or low
-electrical charge, a strong or weak signal, or a shiny or dull spot on
-the surface of a CD. Any piece of discrete information can be reduced
-to a sequence of zeros and ones and thus represented in bits.
+Un _bit_ est tout ce qui peut prendre seulement deux valeurs, ordinairement représentées
+par zéro et un. Au coeur de l'ordinateur, il se concrétise par une charge
+électrique élevée ou basse, un signal fort ou faible, ou
+un point brillant ou terne à la surface d'un CD. Toutes sortes d'informations
+peuvent se représenter comme une suite de zéros et de uns, et donc par des bits. 
+
+Montrons pour l'exemple comment on peut exprimer le nombre 13 avec des bits.
+Cela fonctionne comme l'écriture décimale des nombres,
+mais au lieu d'utiliser 10 chiffres distincts, on a en a seulement 2, et leur poids augmentent d'un facteur 2 de la droite vers la gauche. Voici la suite de bits qui représente le
+nombre 13, avec leurs poids respectifs juste en dessous: 
 
 {{index "binary number", radix, "decimal number"}}
 
-For example, we can express the number 13 in bits. It works the same
-way as a decimal number, but instead of 10 different ((digit))s, you
-have only 2, and the weight of each increases by a factor of 2 from
-right to left. Here are the bits that make up the number 13, with the
-weights of the digits shown below them:
-
 ```{lang: null}
-   0   0   0   0   1   1   0   1
- 128  64  32  16   8   4   2   1
+ ...    0   0   0   0   1   1   0   1
+ ...  128  64  32  16   8   4   2   1
 ```
 
-So that's the binary number 00001101. Its non-zero digits stand for
-8, 4, and 1, and add up to 13.
+Cela donne donc le nombre binaire 00001101. Ses chiffres non nuls expriment
+8, 4, et 1, et leur somme donne 13, le nombre que nous souhaitions transcrire.
 
-## Values
+## Les valeurs
 
 {{index [memory, organization], "volatile data storage", "hard drive"}}
 
-Imagine a sea of bits—an ocean of them. A typical modern computer has
-more than 30 billion bits in its volatile data storage (working
-memory). Nonvolatile storage (the hard disk or equivalent) tends to
-have yet a few orders of magnitude more.
-
-To be able to work with such quantities of bits without getting lost,
-we must separate them into chunks that represent pieces of
-information. In a JavaScript environment, those chunks are called
-_((value))s_. Though all values are made of bits, they play different
-roles. Every value has a ((type)) that determines its role. Some
-values are numbers, some values are pieces of text, some values are
-functions, and so on.
+Imaginez une vaste étendue de bits—un océan de 0 et de 1. Le moindre ordinateur
+moderne concentre plus de 30 billions (mille milliards) de bits dans
+sa mémoire principale (mémoire volatile). Il en a encore une centaine
+de fois plus dans sa mémoire de masse (disque dur ou équivalent).
+ 
+Pour être en mesure de travailler sur ces quantités astronomiques de bits
+sans se perdre, on doit les regrouper en fragments pour représenter des
+morceaux d'informations. Ces fragments sont appelés _((valeur))s_ dans
+le contexte de JavaScript. Bien que toutes ces valeurs soient faites de bits,
+elles se distinguent par leurs rôles. Chaque valeur a un _((type))_ qui détermine ce
+rôle. Certaines représentent des nombres, d'autres des portions de texte, 
+d'autres encore des fonctions, etc.
 
 {{index "garbage collection"}}
 
-To create a value, you must merely invoke its name. This is
-convenient. You don't have to gather building material for your values
-or pay for them. You just call for one, and _whoosh_, you have it. They
-are not really created from thin air, of course. Every value has to be
-stored somewhere, and if you want to use a gigantic amount of them at
-the same time, you might run out of memory. Fortunately, this is a
-problem only if you need them all simultaneously. As soon as you no
-longer use a value, it will dissipate, leaving behind its bits to be
-recycled as building material for the next generation of values.
+Pour créer une valeur, il suffit d'utiliser son nom. C'est bien pratique.
+Inutile de rassembler je ne sais quel matériel de construction ou de payer pour produire
+une valeur. Il suffit d'en invoquer une, et _hop_, vous l'avez. Bien sûr,
+elles ne sont pas vraiment créées à partir de rien. Chaque valeur doit être
+stockée quelque part et si vous en voulez une quantité considérable dans
+un laps de temps très court, vous pourriez manquer de mémoire. Fort heureusement,
+ce n'est un problème que si vous en avez besoin instantanément. Dès que
+vous n'avez plus besoin d'utiliser une valeur, elle va disparaître, laissant
+ses bits derrière elle pour qu'ils puissent être recyclés en une nouvelle
+génération de valeurs. 
 
-This chapter introduces the atomic elements of JavaScript programs,
-that is, the simple value types and the operators that can act on such
-values.
+Dans ce chapitre, nous découvrirons les atomes d'un programme JavaScript,
+c'est-à-dire les types de valeurs les plus courantes et les opérations qui
+permettent d'agir sur celles-ci.
 
-## Numbers
+## Nombres
 
 {{index [syntax, number], number, [number, notation]}}
 
-Values of the _number_ type are, unsurprisingly, numeric values. In a
-JavaScript program, they are written as follows:
+Les valeurs de type _number_ représentent, comme il faut s'y attendre, des nombres.
+Dans un programme JavaScript, on les écrit comme suit:
 
 ```
 13
@@ -92,40 +92,38 @@ JavaScript program, they are written as follows:
 
 {{index "binary number"}}
 
-Use that in a program, and it will cause the bit pattern for the
-number 13 to come into existence inside the computer's memory.
+Une telle ligne d'un programme crée et stocke, dans la mémoire de l'ordinateur, le motif binaire associé à 13.
 
 {{index [number, representation], bit}}
 
-JavaScript uses a fixed number of bits, 64 of them, to store a
-single number value. There are only so many patterns you can make with
-64 bits, which means that the number of different numbers that can be
-represented is limited. With _N_ decimal ((digit))s, you can represent
-10^N^ numbers. Similarly, given 64 binary
-digits, you can represent 2^64^ different numbers, which is about 18
-quintillion (an 18 with 18 zeros after it). That's a lot.
+JavaScript utilise un nombre fixe de bits, 64 précisément, pour stocker
+une valeur numérique. Même si le nombre de motifs réalisables avec 64 bits
+est grand, il n'en demeure pas moins qu'il est limité. Avec _N_ chiffres décimaux,
+on peut représenter 10^N^ nombres. De même, avec 64 chiffres binaires, on peut
+représenter 2^64^ nombres distincts, ce qui représente environ 18 quintillons (un 18
+suivi de 18 zéros). C'est beaucoup. 
 
-Computer memory used to be much smaller, and people tended to use
-groups of 8 or 16 bits to represent their numbers. It was easy to
-accidentally _((overflow))_ such small numbers—to end up with a number
-that did not fit into the given number of bits. Today, even computers
-that fit in your pocket have plenty of memory, so you are free to use
-64-bit chunks, and you need to worry about overflow only when dealing
-with truly astronomical numbers.
+La mémoire des ordinateurs était bien plus petite autrefois et l'usage
+était d'utiliser des groupes de 8 ou 16 bits pour représenter des nombres.
+Il était facile de dépasser accidentellement les capacités pour ces nombres et,
+au final, d'obtenir des résultats tronqués. De nos jours, même les ordinateurs
+qui tiennent dans une poche ont suffisamment de mémoire. Nous sommes donc libres
+d'utiliser des fragments de 64 bits sans avoir à nous soucier de ces dépassements (sauf
+à manipuler des nombres vraiment astronomiques).
 
 {{index sign, "floating-point number", "sign bit"}}
 
-Not all whole numbers less than 18 quintillion fit in a JavaScript number,
-though. Those bits also store negative numbers, so one bit indicates
-the sign of the number. A bigger issue is that nonwhole numbers must
-also be represented. To do this, some of the bits are used to store
-the position of the decimal point. The actual maximum whole number
-that can be stored is more in the range of 9 quadrillion (15
-zeros)—which is still pleasantly huge.
+Les nombres entiers inférieurs à 18 quintillions ne sont pas les seuls à devoir
+tenir dans ces 64 bits. Ces bits stockent aussi des nombres négatifs, un bit
+sert donc à indiquer le signe du nombre. On doit encore pouvoir représenter
+des nombres décimaux (non entiers) et la chose est plus délicate.
+Pour y parvenir, on consacre encore quelques bits afin d'indiquer
+la position du séparateur décimal. En fait, le plus grand nombre entier représentable
+est de l'ordre de 9 quadrillions (15 zéros)—c'est encore très confortable.
 
 {{index [number, notation], "fractional number"}}
 
-Fractional numbers are written by using a dot.
+Les nombres décimaux s'écrivent avec un point.
 
 ```
 9.81
@@ -133,35 +131,37 @@ Fractional numbers are written by using a dot.
 
 {{index exponent, "scientific notation", [number, notation]}}
 
-For very big or very small numbers, you may also use scientific
-notation by adding an _e_ (for _exponent_), followed by the exponent
-of the number.
+Lorsque ces nombres sont très grands ou, au contraire, très 
+proches de zéro, on peut aussi utiliser la notation scientifique.
+On ajoute un _e_ (pour l'_exposant_), suivi de l'exposant du nombre.
 
 ```
 2.998e8
 ```
 
-That is 2.998 × 10^8^ = 299,800,000.
+Ce qui représente 2,998 × 10^8^ = 299 800 000.
 
 {{index pi, [number, "precision of"], "floating-point number"}}
 
-Calculations with whole numbers (also called _((integer))s_) smaller
-than the aforementioned 9 quadrillion are guaranteed to always be
-precise. Unfortunately, calculations with fractional numbers are
-generally not. Just as π (pi) cannot be precisely expressed by a
-finite number of decimal digits, many numbers lose some precision when
-only 64 bits are available to store them. This is a shame, but it
-causes practical problems only in specific situations. The important
-thing is to be aware of it and treat fractional digital numbers as
-approximations, not as precise values.
+Les calculs qui font intervenir des nombres entiers (_((integer))s_)
+inférieurs à la limite mentionnée plus tôt de 9 quadrillions offrent
+la garantie d'être toujours exacts. Malheureusement, les calculs
+avec des nombres décimaux ne le sont généralement pas. De même que
+π (pi) ne peut être exprimé par une suite finie de chiffres décimaux,
+la plupart des nombres décimaux ne sont qu'approximativement représentés
+par une suite de 64 bits. C'est embarrassant, mais en pratique cela n'est
+gênant que dans des situations très particulières. L'important est
+d'être conscient de ces limites et de traiter les nombres décimaux comme
+des approximations, non des valeurs exactes. 
 
-### Arithmetic
+### Arithmétique
 
 {{index [syntax, operator], operator, "binary operator", arithmetic, addition, multiplication}}
 
-The main thing to do with numbers is arithmetic. Arithmetic operations
-such as addition or multiplication take two number values and produce
-a new number from them. Here is what they look like in JavaScript:
+Ce qu'on peut principalement faire avec des nombres, c'est de l'arithmétique.
+Les opérations arithmétiques comme l'addtion ou la multiplication prennent 
+deux valeurs numériques pour en produire une troisième. Voici à quoi elles ressemblent
+en JavaScript:
 
 ```
 100 + 4 * 11
@@ -169,17 +169,18 @@ a new number from them. Here is what they look like in JavaScript:
 
 {{index [operator, application], asterisk, "plus character", "* operator", "+ operator"}}
 
-The `+` and `*` symbols are called _operators_. The first stands for
-addition, and the second stands for multiplication. Putting an
-operator between two values will apply it to those values and produce
-a new value.
+Les symboles `+` et `*` sont ce qu'on appelle des _opérateurs_. Le premier
+pour l'addition et le second pour la multiplication. Placer un opérateur entre
+deux valeurs applique celui-ci à ces valeurs et produit une nouvelle valeur.
 
 {{index grouping, parentheses, precedence}}
 
-But does the example mean "add 4 and 100, and multiply the result by 11,"
-or is the multiplication done before the adding? As you might have
-guessed, the multiplication happens first. But as in mathematics, you
-can change this by wrapping the addition in parentheses.
+Mais faut-il interpréter cet exemple comme «ajouter 4 et 100, puis
+multiplier le résultat par 11» ou est-ce la multiplication qu'il
+faut effectuer avant l'addition? Comme vous pouvez le deviner,
+c'est la multiplication qu'il faut effectuer en premier.
+Néanmoins, comme en mathématiques, on peut modifier cet ordre en
+plaçant l'addition et ses opérandes entre parenthèses.
 
 ```
 (100 + 4) * 11
@@ -187,172 +188,174 @@ can change this by wrapping the addition in parentheses.
 
 {{index "hyphen character", "slash character", division, subtraction, minus, "- operator", "/ operator"}}
 
-For subtraction, there is the `-` operator, and division can be done
-with the `/` operator.
+Pour la soustraction, on a l'opérateur `-` et pour la division l'opérateur `/`.
 
-When operators appear together without parentheses, the order in which
-they are applied is determined by the _((precedence))_ of the
-operators. The example shows that multiplication comes before
-addition. The `/` operator has the same precedence as `*`. Likewise
-for `+` and `-`. When multiple operators with the same precedence
-appear next to each other, as in `1 - 2 + 1`, they are applied left to
-right: `(1 - 2) + 1`.
+Lorsque plusieurs opérateurs sont utilisés sans parenthèses, l'ordre
+dans lequel ils sont appliqués est déterminé par la _((précédence))_ de ces opérateurs.
+L'exemple montre que la multiplication vient avant l'addition. L'opérateur `/`
+a la même précédence que `*`. De même pour `+` et `-`. Lorsque plusieurs
+opérateurs de même précédence se suivent, comme dans `1 - 2 + 1`, ils sont appliqués
+de la gauche vers la droite: `(1 - 2) + 1`.
 
-These rules of precedence are not something you should worry about.
-When in doubt, just add parentheses.
+Ces règles de précédence ne doivent pas vous inquiéter. En cas de doute,
+ajoutez simplement des parenthèses.
 
 {{index "modulo operator", division, "remainder operator", "% operator"}}
 
-There is one more arithmetic operator, which you might not immediately
-recognize. The `%` symbol is used to represent the _remainder_
-operation. `X % Y` is the remainder of dividing `X` by `Y`. For
-example, `314 % 100` produces `14`, and `144 % 12` gives `0`.
-The remainder operator's precedence is the same as that of multiplication and
-division. You'll also often see this operator referred to as _modulo_.
+Il reste encore un opérateur arithmétique que vous pourriez ne pas
+reconnaître immédiatement.
+Le symbole `%` représente le _reste_ de la division entière. `X % Y` est le
+reste de la division entière de `X` par `Y`. Par exemple, `314 % 100` produira
+`14`, et `144 % 12` donne `0`. La précédence de `%` est la même que celle
+de la multiplication et de la division. Cet opérateur est fréquemment appelé _modulo_. 
 
-### Special numbers
+### Nombres spéciaux
 
 {{index [number, "special values"]}}
 
-There are three special values in JavaScript that are considered
-numbers but don't behave like normal numbers.
+On dispose, en JavaScript, de trois valeurs spéciales considérées comme des nombres
+mais qui ne se comportent pas comme des nombres habituels.
 
 {{index infinity}}
 
-The first two are `Infinity` and `-Infinity`, which represent the
-positive and negative infinities. `Infinity - 1` is still `Infinity`,
-and so on. Don't put too much trust in infinity-based computation,
-though. It isn't mathematically sound, and it will quickly lead to the
-next special number: `NaN`.
+Les deux premières sont `Infinity` et `-Infinity` qui représentent respectivement
+les infinis positif et négatif. `Infinity - 1` n'est pas différent de `Infinity`   
+et ainsi de suite. Ne vous fiez donc pas trop aux calculs avec ces infinis. 
+Ils se contentent d'approcher les notions mathématiques correspondantes et vous
+conduiront rapidement à la prochaîne valeur numérique spéciale: `NaN`.
 
 {{index NaN, "not a number", "division by zero"}}
 
-`NaN` stands for "not a number", even though it _is_ a value of the
-number type. You'll get this result when you, for example, try to
-calculate `0 / 0` (zero divided by zero), `Infinity - Infinity`, or
-any number of other numeric operations that don't yield a meaningful
-result.
+`NaN` abrège «not a number» (pas un nombre), bien que ce _soit_ une
+valeur de type nombre. On obtient ce résultat lorsque, par exemple,
+on tente de calculer `0 / 0` (zéro divisé par zéro), `Infinity - Infinity`
+ou tout calcul qui ne produit pas une valeur numérique qui fait sens.
 
-## Strings
+## Chaînes de caractères \[_Strings_\]
 
 {{indexsee "grave accent", backtick}}
 
 {{index [syntax, string], text, character, [string, notation], "single-quote character", "double-quote character", "quotation mark", backtick}}
 
-The next basic data type is the _((string))_. Strings are used to
-represent text. They are written by enclosing their content in quotes.
+Le prochain type de données élémentaires est _((string))_ (chaîne de caractères).
+Il est utilisé pour représenter du texte. On les écrit en délimitant leur contenu
+avec des guillemets droits. 
 
 ```
-`Down on the sea`
-"Lie on the ocean"
-'Float on the ocean'
+`Bas sur la mer`
+"Étendu sur l'océan"
+'Flotter dans l\'océan'
 ```
 
-You can use single quotes, double quotes, or backticks to mark
-strings, as long as the quotes at the start and the end of the string
-match.
+On peut utiliser des guillemets simples (`'`), doubles (`"`) ou «arrière» (`` ` `` -  _backticks_) pour
+délimiter les chaînes, pourvu que le premier corresponde au dernier.
 
 {{index "line break", "newline character"}}
 
-Almost anything can be put between quotes, and JavaScript will make a
-string value out of it. But a few characters are more difficult. You
-can imagine how putting quotes between quotes might be hard.
-_Newlines_ (the characters you get when you press [enter]{keyname}) can be
-included without escaping only when the string is quoted with backticks
-(`` ` ``).
+On peut mettre pratiquement tout ce qu’on veut entre des guillemets
+et JavaScript fera la conversion en une valeur de type `string`.
+Mais pour certains caractères c’est un peu tordu.
+Vous pouvez imaginer à quel point il est délicat de mettre
+des guillemets entre guillemets.
+Les sauts de lignes (comme vous en faites en appuyant sur [Entrée]{keyname})
+ne peuvent être mis, sans échappement, dans une chaîne que si cette chaîne est délimitée
+par des guillemets «arrière» (`` ` ``).
 
 {{index [escaping, "in strings"], ["backslash character", "in strings"]}}
 
-To make it possible to include such characters in a string, the
-following notation is used: whenever a backslash (`\`) is found inside
-quoted text, it indicates that the character after it has a special
-meaning. This is called _escaping_ the character. A quote that is
-preceded by a backslash will not end the string but be part of it.
-When an `n` character occurs after a backslash, it is interpreted as a
-newline. Similarly, a `t` after a backslash means a ((tab character)).
-Take the following string:
+Pour mettre de tels caractères dans une chaîne, on emploie l’astuce suivante:
+à chaque fois qu’on trouve un antislash (« \ ») dans un texte entre guillemets,
+cela signifie que le caractère qui le suit a une signification particulière. On
+appelle cela un caractère d'_échappement_.
+Un guillemet qui est précédé d’un antislash n’achèvera pas la chaîne mais en fera partie.
+Quand le caractère `n` se trouve derrière l’antislash, il est interprété
+comme un saut de ligne. De même, un `t` derrière un antislash signifie un caractère de tabulation.
+Observez la chaîne:
 
 ```
-"This is the first line\nAnd this is the second"
+"Voici une première ligne\nEt maintenant la seconde"
 ```
 
-The actual text contained is this:
+Le texte correspondant est en fait:
 
 ```{lang: null}
-This is the first line
-And this is the second
+Voici une première ligne
+Et maintenant la seconde
 ```
 
-There are, of course, situations where you want a backslash in a
-string to be just a backslash, not a special code. If two backslashes
-follow each other, they will collapse together, and only one will be
-left in the resulting string value. This is how the string "_A newline
-character is written like `"`\n`"`._" can be expressed:
+Il existe bien entendu des cas où vous voudriez que l’antislash
+dans une chaîne soit juste un antislash et pas un caractère d’échappement.
+Si deux antislashes se succèdent, ils vont se combiner et seul
+l’un d’eux sera conservé dans la chaîne résultante.
+Voici comment la chaîne «_Un caractère de saut de ligne est écrit ainsi `"`\n`"`._»
+peut être exprimée:
 
 ```
-"A newline character is written like \"\\n\"."
+"Un caractère de saut de ligne est écrit ainsi \"\\n\"."
 ```
 
 {{id unicode}}
 
 {{index [string, representation], Unicode, character}}
 
-Strings, too, have to be modeled as a series of bits to be able to
-exist inside the computer. The way JavaScript does this is based on
-the _((Unicode))_ standard. This standard assigns a number to
-virtually every character you would ever need, including characters
-from Greek, Arabic, Japanese, Armenian, and so on. If we have a number
-for every character, a string can be described by a sequence of
-numbers.
+Les chaînes, elles aussi, doivent être traduites par une série de bits
+pour pouvoir exister à l'intérieur de l'ordinateur. Pour y parvenir,
+JavaScript s'appuie sur le standard _((Unicode))_. Ce standard assigne
+un nombre à chaque caractère dont vous pourriez avoir besoin et cela inclut
+le grec, l'arabe, le japonais, l'arménien, etc. Puisque nous disposons
+ainsi d'un nombre pour chaque caractère, une chaîne peut se décrire comme
+une suite de tels nombres.
 
 {{index "UTF-16", emoji}}
 
-And that's what JavaScript does. But there's a complication:
-JavaScript's representation uses 16 bits per string element, which can
-describe up to 2^16^ different characters. But Unicode defines more
-characters than that—about twice as many, at this point. So some
-characters, such as many emoji, take up two "character positions" in
-JavaScript strings. We'll come back to this in [Chapter
-?](higher_order#code_units).
+Et c'est ce que fait JavaScript. Cependant il y a une complication:
+JavaScript utilise 16 bits pour représenter chaque caractère (ou plutôt le nombre
+qui lui correspond) et cela lui permet d'en coder 2^16^ au plus.
+Mais Unicode en définit davantage—environ deux fois plus pour l'instant.
+Ainsi, certains caractères, comme la plupart des emojis, nécessitent «deux positions
+de caractères» dans la chaîne JavaScript. Nous reviendrons sur ce point dans le
+[chapitre ?](higher_order#code_units).
 
 {{index "+ operator", concatenation}}
 
-Strings cannot be divided, multiplied, or subtracted, but the `+`
-operator _can_ be used on them. It does not add, but it
-_concatenates_—it glues two strings together. The following line will
-produce the string `"concatenate"`:
+Les chaînes ne peuvent être divisées, multipliées ou soustraites,
+mais l’opérateur `+` _peut_ tout de même être utilisé avec des chaînes.
+Il n’ajoute rien au sens mathématique mais _concatène_ les chaînes—il
+les colle ensemble. La ligne suivante produit la chaîne `"concaténer"`:
 
 ```
-"con" + "cat" + "e" + "nate"
+"con" + "cat" + "é" + "ner"
 ```
 
-String values have a number of associated functions (_methods_) that
-can be used to perform other operations on them. I'll say more about
-these in [Chapter ?](data#methods).
+Les valeurs de type chaîne peuvent être manipulées par de nombreuses
+fonctions (_méthodes_) dédiées. Nous en dirons davantage à leur propos dans
+le [chapitre ?](data#methods).
 
 {{index interpolation, backtick}}
 
-Strings written with single or double quotes behave very much the
-same—the only difference is in which type of quote you need to escape
-inside of them. Backtick-quoted strings, usually called _((template
-literals))_, can do a few more tricks. Apart from being able to span
-lines, they can also embed other values.
+Les chaînes écrites avec des guillemets simples ou doubles ont un comportement
+similaire—la seule différence réside dans la sorte de guillemet qu'il
+faut échapper lorsqu'on veut qu'il fasse partie de la chaîne.
+Les chaînes délimitées par des guillemets
+«arrière», souvent appelées _((littéraux de gabarits))_, ont quelques particularités
+supplémentaires. Hormis la possibilité d'y mettre plusieurs lignes, elles peuvent aussi
+embarquer d'autres valeurs: 
 
 ```
-`half of 100 is ${100 / 2}`
+`La moitié de 100 est ${100 / 2}`
 ```
 
-When you write something inside `${}` in a template literal, its
-result will be computed, converted to a string, and included at that
-position. The example produces "_half of 100 is 50_".
+Lorsqu'on écrit quelque chose à l'intérieur de `${}` dans un gabarit,
+son résultat est calculé, converti en chaîne, laquelle est incluse à cette position.
+L'exemple produira "_La moitié de 100 est 50_".
 
-## Unary operators
+## Opérateurs unaires
 
 {{index operator, "typeof operator", type}}
 
-Not all operators are symbols. Some are written as words. One example
-is the `typeof` operator, which produces a string value naming the
-type of the value you give it.
+Les opérateurs ne sont pas tous des symboles. Certains sont des mots.
+L'opérateur `typeof` en est un exemple. Il produit une valeur de type
+chaîne pour donner le nom du type de la valeur qui le suit. 
 
 ```
 console.log(typeof 4.5)
@@ -365,37 +368,36 @@ console.log(typeof "x")
 
 {{id "console.log"}}
 
-We will use `console.log` in example code to indicate that we want to
-see the result of evaluating something. More about that in the [next
-chapter](program_structure).
+Nous utiliserons `console.log` dans les exemples de code afin d'indiquer
+que nous souhaitons voir le résultat de l'_évaluation_ de quelque chose.
+Nous en reparlerons dans le [prochain chapitre](program_structure).
 
 {{index negation, "- operator", "binary operator", "unary operator"}}
 
-The other operators shown all operated on two values, but `typeof`
-takes only one. Operators that use two values are called _binary_
-operators, while those that take one are called _unary_ operators. The
-minus operator can be used both as a binary operator and as a unary
-operator.
+Les autres opérateurs déjà mentionnés opèrent tous sur deux valeurs, alors
+que `typeof` n'en attend qu'une. Les opérateurs qui utilisent deux valeurs
+sont appelés opérateurs _binaires_, tandis que ceux qui n'en utilisent qu'une
+sont appelés opérateurs _unaires_. L'opérateur `-` peut être utilisé comme
+un opérateur binaire ou comme un opérateur unaire.
 
 ```
 console.log(- (10 - 2))
 // → -8
 ```
-
-## Boolean values
+## Valeurs booléennes
 
 {{index Boolean, operator, true, false, bit}}
 
-It is often useful to have a value that distinguishes between only two
-possibilities, like "yes" and "no" or "on" and "off". For this
-purpose, JavaScript has a _Boolean_ type, which has just two values,
-true and false, which are written as those words.
+Il est bien souvent utile de disposer d'une valeur qui distingue exactement
+deux possibilités, comme «oui» et «non» ou «allumé» et «éteint». Pour cela,
+JavaScript dispose du type _Boolean_ qui n'a que de deux valeurs: `true`
+et `false`. 
 
-### Comparison
+### Comparaison
 
 {{index comparison}}
 
-Here is one way to produce Boolean values:
+Voici une façon de produire une valeur booléenne:
 
 ```
 console.log(3 > 2)
@@ -406,65 +408,67 @@ console.log(3 < 2)
 
 {{index [comparison, "of numbers"], "> operator", "< operator", "greater than", "less than"}}
 
-The `>` and `<` signs are the traditional symbols for "is greater
-than" and "is less than", respectively. They are binary operators.
-Applying them results in a Boolean value that indicates whether they
-hold true in this case.
+Les signes `>` et `<` sont les symboles traditionnels pour exprimer
+«est (strictement) supérieur à» et «est (strictement) inférieur à». 
+Ce sont des opérateurs binaires. Leur utilisation produit une valeur booléenne
+qui indique si l'inégalité est satisfaite (auquel cas elle produit `true`) ou non (`false`).
 
-Strings can be compared in the same way.
+On peut comparer des chaînes de la même façon:
 
 ```
-console.log("Aardvark" < "Zoroaster")
+console.log("Godzilla" < "Goldorak")
 // → true
 ```
 
 {{index [comparison, "of strings"]}}
 
-The way strings are ordered is roughly alphabetic but not really what
-you'd expect to see in a dictionary: uppercase letters are always
-"less" than lowercase ones, so `"Z" < "a"`, and nonalphabetic
-characters (!, -, and so on) are also included in the ordering. When
-comparing strings, JavaScript goes over the characters from left to
-right, comparing the ((Unicode)) codes one by one.
+Le classement des chaînes suit plus ou moins l’ordre alphabétique.
+Plus ou moins parce que… les lettres majuscules sont toujours
+«plus petites que» les minuscules, donc `"Z" < "a"`
+(«Z» en majuscule, «a» en minuscule) vaut `true` et
+les caractères non alphabétiques («!», «-», etc.) sont
+également inclus dans ce classement.
+Pour comparer les chaînes, JavaScript se contente de comparer,
+un à un et de gauche à droite, les codes ((Unicode)) associés
+aux caractères dans la chaîne.
 
 {{index equality, ">= operator", "<= operator", "== operator", "!= operator"}}
 
-Other similar operators are `>=` (greater than or equal to), `<=`
-(less than or equal to), `==` (equal to), and `!=` (not equal to).
+Voici d’autres opérateurs du même genre:
+`>=` (supérieur ou égal à), `<=` (inférieur ou égal à),
+`==` (égal à), et `!=` (n’est pas égal à).
 
 ```
 console.log("Itchy" != "Scratchy")
 // → true
-console.log("Apple" == "Orange")
+console.log("Pomme" == "Orange")
 // → false
 ```
 
 {{index [comparison, "of NaN"], NaN}}
 
-There is only one value in JavaScript that is not equal to itself, and
-that is `NaN` ("not a number").
+Seule une valeur n'est pas égale à elle-même en JavaSript: `NaN` ("not a number")
 
 ```
 console.log(NaN == NaN)
 // → false
 ```
 
-`NaN` is supposed to denote the result of a nonsensical computation,
-and as such, it isn't equal to the result of any _other_ nonsensical
-computations.
+En effet, `NaN` représente le résultat d'un calcul qui n'a pas de sens,
+dès lors, il ne doit pas être égal au résultat d'un _autre_ calcul insensé.
 
-### Logical operators
+### Opérateurs logiques
 
 {{index reasoning, "logical operators"}}
 
-There are also some operations that can be applied to Boolean values
-themselves. JavaScript supports three logical operators: _and_, _or_,
-and _not_. These can be used to "reason" about Booleans.
+On trouve aussi des opérations qui s'appliquent à des valeurs booléennes.
+JavaScript propose trois opérateurs logiques: _et_, _ou_ et _non_.
+On peut les utiliser pour «raisonner» sur les booléens.
 
 {{index "&& operator", "logical and"}}
 
-The `&&` operator represents logical _and_. It is a binary operator,
-and its result is true only if both the values given to it are true.
+L'opérateur `&&` représente le _et_ logique. C'est un opérateur binaire,
+et son résultat n'est `true` que si les deux valeurs qu'on lui soumet valent `true`.
 
 ```
 console.log(true && false)
@@ -475,8 +479,7 @@ console.log(true && true)
 
 {{index "|| operator", "logical or"}}
 
-The `||` operator denotes logical _or_. It produces true if either of
-the values given to it is true.
+L'opérateur `||` correspond au _ou_ logique. Il ne produit `true` que lorsqu'au moins l'une des valeurs fournies vaut elle-même `true`.
 
 ```
 console.log(false || true)
@@ -487,19 +490,19 @@ console.log(false || false)
 
 {{index negation, "! operator"}}
 
-_Not_ is written as an exclamation mark (`!`). It is a unary operator
-that flips the value given to it—`!true` produces `false`, and `!false`
-gives `true`.
+_Non_ s'écrit en utilisant un point d'exclamation (`!`). C'est un opérateur
+unaire qui inverse la valeur qu'on lui fournit—`!true` produit `false` et
+`!false` produit `true`.
 
 {{index precedence}}
 
-When mixing these Boolean operators with arithmetic and other
-operators, it is not always obvious when parentheses are needed. In
-practice, you can usually get by with knowing that of the operators we
-have seen so far, `||` has the lowest precedence, then comes `&&`,
-then the comparison operators (`>`, `==`, and so on), and then the
-rest. This order has been chosen such that, in typical expressions
-like the following one, as few parentheses as possible are necessary:
+Lorsqu'on mélange ces opérateurs booléens à des opérateurs arithmétiques
+et autres, il n'est pas toujours évident de savoir si des parenthèses
+sont requises. En pratique, on peut s'en sortir avec la précédence de
+ceux qu'on a vus jusqu'ici, `||` a la plus faible, puis vient `&&`, ensuite
+les opérateurs de comparaison (`>`, `==`, etc.), enfin les autres.
+Cet ordre a été choisi de façon que, dans une expression typique comme
+celle qui suit, on ait besoin du moins possible de parenthèses.
 
 ```
 1 + 1 == 2 && 10 * 10 > 50
@@ -507,9 +510,10 @@ like the following one, as few parentheses as possible are necessary:
 
 {{index "conditional execution", "ternary operator", "?: operator", "conditional operator", "colon character", "question mark"}}
 
-The last logical operator I will discuss is not unary, not binary, but
-_ternary_, operating on three values. It is written with a question
-mark and a colon, like this:
+Le dernier opérateur logique que nous verrons n'est ni unaire,
+ni binaire, mais _ternaire_: il opère sur trois valeurs.
+Il s'écrit en combinant un point d'interrogation (`?`) et
+deux points (`:`), comme ceci:
 
 ```
 console.log(true ? 1 : 2);
@@ -518,36 +522,35 @@ console.log(false ? 1 : 2);
 // → 2
 ```
 
-This one is called the _conditional_ operator (or sometimes just
-the _ternary_ operator since it is the only such operator in the
-language). The value on the left of the question mark "picks" which of
-the other two values will come out. When it is true, it chooses the
-middle value, and when it is false, it chooses the value on the right.
+On le nomme opérateur _conditionnel_ (ou parfois l'opérateur _ternaire_ car c'est le
+seul que propose le langage). La valeur située à gauche du point d'interrogation
+sélectionne celle des deux autres valeurs qui formera le résultat. Lorsqu'elle vaut
+`true`, la valeur du milieu est choisie et, lorsqu'elle vaut `false`, c'est la dernière.
 
-## Empty values
+## Valeurs vides
 
 {{index undefined, null}}
 
-There are two special values, written `null` and `undefined`, that are
-used to denote the absence of a _meaningful_ value. They are
-themselves values, but they carry no information.
+On dispose encore de deux valeurs particulières qui s'écrivent `null` et `undefined`.
+Elles sont utilisées pour indiquer l'absence d'une valeur _utile_ ou faisant sens.
+Bien qu'elles soient elles-mêmes des valeurs, elles ne portent pas d'information.  
 
-Many operations in the language that don't produce a meaningful value
-(you'll see some later) yield `undefined` simply because they have to
-yield _some_ value.
+Beaucoup d'opérations du langage ne produisent pas de valeur significative
+(nous en verrons plus tard) mais elles produisent tout de même `undefined`
+pour la simple et bonne raison qu'elles _doivent_ produire _une_ valeur.
 
-The difference in meaning between `undefined` and `null` is an accident
-of JavaScript's design, and it doesn't matter most of the time. In cases
-where you actually have to concern yourself with these values, I
-recommend treating them as mostly interchangeable.
+La différence de sens entre `undefined` et `null` est due à un accident
+dans la conception de JavaScript, elle n'a pas d'incidence pratique la plupart du temps.
+Je vous recommande de les considérer comme interchangeables.
 
-## Automatic type conversion
+## Conversion automatique de type
 
 {{index NaN, "type coercion"}}
 
-In the Introduction, I mentioned that JavaScript goes out of its way
-to accept almost any program you give it, even programs that do odd
-things. This is nicely demonstrated by the following expressions:
+Dans l'introduction, je vous disais que JavaScript passait les bornes
+en acceptant à peu près n'importe quel programme,
+même des programmes qui font des choses bizarres. Les expressions qui
+suivent vous en donnent une illustration:
 
 ```
 console.log(8 * null)
@@ -564,33 +567,34 @@ console.log(false == 0)
 
 {{index "+ operator", arithmetic, "* operator", "- operator"}}
 
-When an operator is applied to the "wrong" type of value, JavaScript
-will quietly convert that value to the type it needs, using a set of
-rules that often aren't what you want or expect. This is called
-_((type coercion))_. The `null` in the first expression becomes `0`,
-and the `"5"` in the second expression becomes `5` (from string to
-number). Yet in the third expression, `+` tries string concatenation
-before numeric addition, so the `1` is converted to `"1"` (from number
-to string).
+Lorsqu'un opérateur est utilisé avec des valeurs du «mauvais» type,
+JavaScript va les convertir sans avertissement dans le type dont il
+a besoin, en utilisant pour cela un ensemble de règles qui produisent
+quelque chose que vous ne vouliez pas ou n'attendiez pas. Cela s'appelle
+une _((coercition de type))_. La valeur `null` de la première expression est devenue `0`,
+et le `"5"` de la seconde a été transformé en `5` (chaîne vers nombre).
+Pourtant, dans la troisième expression, `+` essai de se comporter comme
+une concaténation avant d'essayer d'être une addition et donc le `1` est
+converti en `"1"` (nombre vers chaîne).
 
 {{index "type coercion", [number, "conversion to"]}}
 
-When something that doesn't map to a number in an obvious way (such as
-`"five"` or `undefined`) is converted to a number, you get the value
-`NaN`. Further arithmetic operations on `NaN` keep producing `NaN`, so
-if you find yourself getting one of those in an unexpected place, look
-for accidental type conversions.
+Quand quelque chose ne correspond pas d'une façon évidente
+à un nombre (comme `"cinq"` ou `undefined`) et que cette chose est tout de même
+convertie en un nombre, vous obtenez la valeur `NaN`.
+Mais si NaN figure dans une opération arithmétique celle-ci produit à nouveau NaN.
+Ainsi, si vous ne vous attendiez pas à trouver NaN quelque part, il y a
+fort à parier qu'une conversion de type accidentelle s'est produite en amont.
 
 {{index null, undefined, [comparison, "of undefined values"], "== operator"}}
 
-When comparing values of the same type using `==`, the outcome is easy
-to predict: you should get true when both values are the same, except
-in the case of `NaN`. But when the types differ, JavaScript uses a
-complicated and confusing set of rules to determine what to do. In
-most cases, it just tries to convert one of the values to the other
-value's type. However, when `null` or `undefined` occurs on either
-side of the operator, it produces true only if both sides are one of
-`null` or `undefined`.
+Lorsque vous comparez deux valeurs du même type avec `==`, le résultat est facile
+à prévoir: vous obtenez `true` lorsque les deux valeurs sont les mêmes sauf dans le
+cas de `NaN`. Mais si jamais les deux valeurs ont des types qui diffèrent,
+Javascript utilise un jeu compliqué de règles pour déterminer quoi faire.
+Dans la plupart des cas, il essaie juste de convertir une valeur dans le type
+de l'autre. Mais si `null` ou `undefined` apparaît dans un membre, la comparaison
+ne produira `true` que si `null` ou `undefined` apparaît dans l'autre. 
 
 ```
 console.log(null == undefined);
@@ -599,92 +603,93 @@ console.log(null == 0);
 // → false
 ```
 
-That behavior is often useful. When you want to test whether a value
-has a real value instead of `null` or `undefined`, you can compare it
-to `null` with the `==` (or `!=`) operator.
+C'est un comportement utile. Lorsque vous avez besoin de vérifier
+si une valeur n'est pas «vide», vous pouvez la comparer à `null`
+avec l'opérateur `==` (ou `!=`).
 
 {{index "type coercion", [Boolean, "conversion to"], "=== operator", "!== operator", comparison}}
 
-But what if you want to test whether something refers to the precise
-value `false`? Expressions like `0 == false` and `"" == false` are
-also true because of automatic type conversion. When you do _not_ want
-any type conversions to happen, there are two additional operators:
-`===` and `!==`. The first tests whether a value is _precisely_ equal
-to the other, and the second tests whether it is not precisely equal.
-So `"" === false` is false as expected.
+Mais comment faire pour tester si quelque chose se réfère précisément à
+la valeur `false`? Des expressions comme `0 == false` et `"" == false` donneront
+`true` à cause des conversions automatiques de type. 
+Si vous voulez empêcher que des conversions de type se produisent, JavaScript
+fournit deux opérateurs supplémentaires: `===` et `!==`. Le premier teste
+si une valeur est _précisément_ égale à une autre et le second si l'une est
+_précisément_ différente de l'autre.
 
-I recommend using the three-character comparison operators defensively to
-prevent unexpected type conversions from tripping you up. But when you're
-certain the types on both sides will be the same, there is no problem with
-using the shorter operators.
+Je vous recommande d'utiliser l'opérateur à trois caractères par prudence et
+pour empêcher que des conversions de type inattendues ne viennent vous titiller le cuir chevelu.
+Néanmoins, si vous êtes certains que les valeurs comparées sont du même type,
+il n'y a aucun problème à utiliser la forme courte de l'opérateur.
 
-### Short-circuiting of logical operators
+### Évaluation «court-circuit» des opérateurs logiques
 
 {{index "type coercion", [Boolean, "conversion to"], operator}}
 
-The logical operators `&&` and `||` handle values of different types
-in a peculiar way. They will convert the value on their left side to
-Boolean type in order to decide what to do, but depending on the
-operator and the result of that conversion, they will return either the
-_original_ left-hand value or the right-hand value.
+Les opérateurs logiques `&&` et `||` gèrent les valeurs de différents types
+de façon un peu spéciale. Ils vont convertir la valeur située à leur gauche
+dans le type booléen de façon à décider quoi faire, et cela va dépendre à la fois
+de l'opérateur et de la valeur logique obtenue après conversion. Au final, on
+obtient la valeur _originale_ (avant conversion) de gauche
+ou celle de droite.
 
 {{index "|| operator"}}
 
-The `||` operator, for example, will return the value to its left when
-that can be converted to true and will return the value on its right
-otherwise. This has the expected effect when the values are Boolean
-and does something analogous for values of other types.
+L'opérateur `||`, par exemple, va renvoyer sa valeur gauche si sa
+conversion donne `true` et sa valeur droite sinon.
+C'est l'effet attendu lorsque les valeurs sont des booléens et cela produit
+quelque chose d'analogue si les valeurs ont d'autres types.
 
 ```
-console.log(null || "user")
-// → user
-console.log("Agnes" || "user")
-// → Agnes
+console.log(null || "utilisateur")
+// → utilisateur
+console.log("Agnès" || "utilisateur")
+// → Agnès
 ```
 
 {{index "default value"}}
 
-We can use this functionality as a way to fall back on a default
-value. If you have a value that might be empty, you can put `||` after
-it with a replacement value. If the initial value can be converted to
-false, you'll get the replacement instead. The rules for converting
-strings and numbers to Boolean values state that `0`, `NaN`, and the
-empty string (`""`) count as `false`, while all the other values count
-as `true`. So `0 || -1` produces `-1`, and `"" || "!?"` yields `"!?"`.
+Ce mécanisme peut être exploité afin de fournir une valeur par défaut.
+Si vous avez une valeur potentiellement vide suivie par `||` et par une
+valeur de remplacement, et que la valeur de gauche est convertie en `false`,
+vous obtenez la valeur de remplacement. Les règles de conversion
+des chaînes et des nombres en valeurs booléennes stipulent que `0`, `NaN` et la
+chaîne vide (`""`) produiront `false`, toutes les autres `true`. Et donc,
+`0 || -1` donne `-1` et `"" || "!?"` donne `"!?"`.
 
 {{index "&& operator"}}
 
-The `&&` operator works similarly but the other way around. When the
-value to its left is something that converts to false, it returns that
-value, and otherwise it returns the value on its right.
+L'opérateur `&&` a un fonctionnement analogue mais dans l'autre sens.
+Lorsque sa valeur gauche est convertie en `false`, c'est celle qu'il produit
+au final et, sinon, il produit celle de droite.
 
-Another important property of these two operators is that the part to
-their right is evaluated only when necessary. In the case of `true ||
-X`, no matter what `X` is—even if it's a piece of program that does
-something _terrible_—the result will be true, and `X` is never
-evaluated. The same goes for `false && X`, which is false and will
-ignore `X`. This is called _((short-circuit evaluation))_.
+Une autre importante propriété de ces deux opérateurs est de n'évaluer leur
+partie droite que si c'est absolument nécessaire. Par exemple, dans l'expression
+`true || X`, la valeur de `X` n'a aucune importance—même si c'est un bout de programme
+qui fait des choses _horribles_—le résultat sera `true` et `X` n'est jamais
+évaluée. La même chose vaut pour `false && X`, qui donnera `false` et ignorera
+`X`. Ce comportement s'appelle _((évaluation court-circuit))_. 
 
 {{index "ternary operator", "?: operator", "conditional operator"}}
 
-The conditional operator works in a similar way. Of the second and
-third values, only the one that is selected is evaluated.
+L'opérateur conditionnel fonctionne aussi selon ce principe. Seule la valeur
+sélectionnée parmi les deux possibles est effectivement évaluée.
 
-## Summary
+## Résumé
 
-We looked at four types of JavaScript values in this chapter: numbers,
-strings, Booleans, and undefined values.
+Nous avons examiné quatre types de valeurs de JavaScript dans ce chapitre: les
+nombres (_numbers_), les chaînes (_strings_), les booléens (_Booleans_) et les valeurs vides.
 
-Such values are created by typing in their name (`true`, `null`) or
-value (`13`, `"abc"`). You can combine and transform values with
-operators. We saw binary operators for arithmetic (`+`, `-`, `*`, `/`,
-and `%`), string concatenation (`+`), comparison (`==`, `!=`, `===`,
-`!==`, `<`, `>`, `<=`, `>=`), and logic (`&&`, `||`), as well as
-several unary operators (`-` to negate a number, `!` to negate
-logically, and `typeof` to find a value's type) and a ternary operator
-(`?:`) to pick one of two values based on a third value.
+On crée ces valeurs en saisissant leur nom (`true`, `null`) ou directement
+ (`13`, `"abc"`). On peut combiner et transformer des valeurs en
+utilisant des opérateurs. Nous avons vu des opérateurs binaires pour l'arithmétique
+(`+`, `-`, `*`, `/`, and `%`), la concaténation de chaînes (`+`),
+les comparaisons (`==`, `!=`, `===`, `!==`, `<`, `>`, `<=`, `>=`),
+et la logique (`&&`, `||`), mais aussi plusieurs opérateurs unaires (`-` la négation
+numérique, `!` la négation logique et `typeof` pour connaître le type d'une valeur)
+et enfin l'opérateur ternaire (`?:`) pour sélectionner
+une valeur parmi deux sur la base d'une troisième.
 
-This gives you enough information to use JavaScript as a pocket
-calculator but not much more. The [next
-chapter](program_structure) will start tying
-these expressions together into basic programs.
+À partir de là, vous disposez d'assez d'informations pour utiliser JavaScript
+comme une calculatrice de poche mais guère plus. Le [prochain chapitre](programm_structure)
+vous apprendra à les combiner de façon à produire des programmes basiques.
