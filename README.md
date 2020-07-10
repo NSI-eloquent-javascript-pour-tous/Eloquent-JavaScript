@@ -4,7 +4,7 @@
 | 1. Values, Types, and Operators        | efloti - fait          |              |
 | 2. Program Structure                   |              |              |
 | 3. Functions                           |              |              |
-| 4. Data Structures: Objects and Arrays | efloti             |              |
+| 4. Data Structures: Objects and Arrays | efloti - fait             |              |
 | 5. Higher-order Functions              | efloti - fait  |              |
 | 6. The Secret Life of Objects          |              |              |
 | 7. Project: A Robot                    |              |              |
