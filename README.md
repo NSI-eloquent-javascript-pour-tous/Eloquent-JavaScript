@@ -2,7 +2,7 @@
 |----------------------------------------|--------------|--------------|
 | 0. Introduction                        | efloti - fait   |              |
 | 1. Values, Types, and Operators        | efloti - fait          |              |
-| 2. Program Structure                   |              |              |
+| 2. Program Structure                   | rose-line    |              |
 | 3. Functions                           |              |              |
 | 4. Data Structures: Objects and Arrays | efloti - fait             |              |
 | 5. Higher-order Functions              | efloti - fait  |              |
