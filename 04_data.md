@@ -957,7 +957,7 @@ dispose de nombreuses méthodes. Certaines sont très utiles comme `slice` et `i
 lesquelles ressemblent aux méthodes de même nom des tableaux.
 
 ```
-console.log("noix de coco".slice(8, 12);
+console.log("noix de coco".slice(8, 12));
 // → coco
 console.log("noix de coco".indexOf("x"));
 // → 3

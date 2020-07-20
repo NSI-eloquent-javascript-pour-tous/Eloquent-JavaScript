@@ -138,7 +138,7 @@ travaille à un niveau d'abstraction trop bas.
 
 {{index [array, iteration]}}
 
-Les fonctions, comme nous celles que nous avons vues jusqu'ici, sont un bon moyen pour construire des abstractions.
+Les fonctions, comme celles que nous avons vues jusqu'ici, sont un bon moyen pour construire des abstractions.
 Mais parfois, cela tourne court.
 
 {{index "for loop"}}
@@ -494,7 +494,7 @@ Le code obtenu n'est pas beaucoup moins lisible.
 let plusGrand = null;
 for (let ecriture of SCRIPTS) {
   if (plusGrand == null ||
-      characterCount(plusGrand) < characterCount(ecriture)) {
+      compterCaracteres(plusGrand) < compterCaracteres(ecriture)) {
     plusGrand = ecriture;
   }
 }
