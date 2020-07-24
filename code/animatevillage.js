@@ -6,17 +6,17 @@
   let active = null
 
   const places = {
-    "Alice's House": {x: 279, y: 100},
-    "Bob's House": {x: 295, y: 203},
-    "Cabin": {x: 372, y: 67},
-    "Daria's House": {x: 183, y: 285},
-    "Ernie's House": {x: 50, y: 283},
-    "Farm": {x: 36, y: 118},
-    "Grete's House": {x: 35, y: 187},
-    "Marketplace": {x: 162, y: 110},
-    "Post Office": {x: 205, y: 57},
-    "Shop": {x: 137, y: 212},
-    "Town Hall": {x: 202, y: 213}
+    "Maison d'Alice": {x: 279, y: 100},
+    "Maison de Bob": {x: 295, y: 203},
+    "Cabane": {x: 372, y: 67},
+    "Maison de Daria": {x: 183, y: 285},
+    "Maison d'Ernie": {x: 50, y: 283},
+    "Ferme": {x: 36, y: 118},
+    "Maison de Grete": {x: 35, y: 187},
+    "Marché": {x: 162, y: 110},
+    "Poste": {x: 205, y: 57},
+    "Magasin": {x: 137, y: 212},
+    "Mairie": {x: 202, y: 213}
   }
   const placeKeys = Object.keys(places)
 
@@ -57,7 +57,7 @@
 
 
     updateView() {
-      let pos = places[this.worldState.place]
+      let pos = places[this.worldState.lieu]
       this.robotElt.style.top = (pos.y - 38) + "px"
       this.robotElt.style.left = (pos.x - 16) + "px"
 
@@ -67,18 +67,18 @@
     updateParcels() {
       while (this.parcels.length) this.parcels.pop().remove()
       let heights = {}
-      for (let {place, address} of this.worldState.parcels) {
-        let height = heights[place] || (heights[place] = 0)
-        heights[place] += 14
+      for (let {lieu, adresse} of this.worldState.colis) {
+        let height = heights[lieu] || (heights[lieu] = 0)
+        heights[lieu] += 14
         let node = document.createElement("div")
-        let offset = placeKeys.indexOf(address) * 16
+        let offset = placeKeys.indexOf(adresse) * 16
         node.style.cssText = "position: absolute; height: 16px; width: 16px; background-image: url(img/parcel2x.png); background-position: 0 -" + offset + "px";
-        if (place == this.worldState.place) {
+        if (lieu == this.worldState.lieu) {
           node.style.left = "25px"
           node.style.bottom = (20 + height) + "px"
           this.robotElt.appendChild(node)
         } else {
-          let pos = places[place]
+          let pos = places[lieu]
           node.style.left = (pos.x - 5) + "px"
           node.style.top = (pos.y - 10 - height) + "px"
           this.node.appendChild(node)
@@ -88,12 +88,12 @@
     }
 
     tick() {
-      let {direction, memory} = this.robot(this.worldState, this.robotState)
-      this.worldState = this.worldState.move(direction)
-      this.robotState = memory
+      let {direction, memoire} = this.robot(this.worldState, this.robotState)
+      this.worldState = this.worldState.deplacer(direction)
+      this.robotState = memoire
       this.turn++
       this.updateView()
-      if (this.worldState.parcels.length == 0) {
+      if (this.worldState.colis.length == 0) {
         this.button.remove()
         this.text.textContent = ` Finished after ${this.turn} turns`
         this.robotElt.firstChild.src = "img/robot_idle2x.png"
@@ -120,7 +120,7 @@
     }
   }
 
-  window.runRobotAnimation = function(worldState, robot, robotState) {
+  window.lancerAnimationRobot = function(worldState, robot, robotState) {
     if (active && active.timeout != null)
       clearTimeout(active.timeout)
     active = new Animation(worldState, robot, robotState)
