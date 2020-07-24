@@ -21,7 +21,7 @@ qui placent les objets (et des concepts associés)
 au centre de l'organisation d'un programme.
 
 Bien qu'on ne s'accorde pas sur une définition précise, la programmation
-orienté objet organise la structure de la plupart des langages de programmation,
+orientée objet organise la structure de la plupart des langages de programmation,
 JavaScript y compris. Ce chapitre décrit la façon dont ces
 idées peuvent s'appliquer en JavaScript.
 
@@ -43,7 +43,7 @@ immédiatement doit être mis à jour.
 {{id interface}}
 {{index [interface, object]}}
 
-Les différents fragments d'un tel programme intéragissent les uns
+Les différents fragments d'un tel programme interagissent les uns
 avec les autres par l'intermédiaire d'_interfaces_, un nombre limité
 de fonctions et/ou variables qui fournissent des fonctionnalités utiles à
 un plus haut niveau d'abstraction, en cachant les détails de leur implémentation.
@@ -133,15 +133,15 @@ parler.call(lapinAffame, "Burp!");
 
 Puisque chaque fonction dispose de sa propre variable `this` et que sa
 valeur dépend de la façon dont elle a été appelée, il n'est pas possible
-d'accéder à la valeur de `this` de la porté englobante avec une fonction
+d'accéder à la valeur de `this` de la portée englobante avec une fonction
 définie avec le mot clé `function`.
 
 {{index "this binding", "arrow function"}}
 
-Les fonctions «flèches» sont différentes—elle ne dispose pas de leur
+Les fonctions «flèches» sont différentes—elles ne disposent pas de leur
 propre variable `this` ce qui leur permet d'accéder au `this` de la
 portée englobante. Ainsi, on peut faire quelque chose comme cela, où
-`this` fait réfèrence à celui de la fonction `normaliser`:
+`this` fait référence à celui de la fonction `normaliser`:
 
 ```
 function normaliser() {
@@ -162,7 +162,7 @@ clé `function`, cela n'aurait pas fonctionné.
 
 {{index "toString method"}}
 
-Regarder attentivement.
+Regardez attentivement.
 
 ```
 let vide = {};
@@ -209,7 +209,7 @@ objet.
 
 La relation «est le prototype de» entre les objets JavaScript forme une
 structure ((arborescente)) dont la racine est `Object.prototype`. Cet objet
-fourni quelques méthodes partagées par tous les objets, comme `toString`,
+fournit quelques méthodes partagées par tous les objets, comme `toString`,
 qui convertit un objet en une chaîne de caractères qui le représente.
 
 {{index inheritance, "Function prototype", "Array prototype", "Object prototype"}}
@@ -271,7 +271,7 @@ Le système de ((prototype)) de JavaScript peut s'interpréter comme un moyen
 de réaliser un concept de la programmation orientée objet appelé _((classe))_.
 Une classe définit l'organisation d'un _type_ d'objet—en précisant quelles
 sont ses méthodes et propriétés.
-Un tel objet est dit être une _((instance))_ de la classe.
+Un tel objet est appelé une _((instance))_ de la classe.
 
 {{index [property, inheritance]}}
 
@@ -299,7 +299,7 @@ function produireLapin(type) {
 {{index "new operator", "this binding", "return keyword", [object, creation]}}
 
 JavaScript fournit un moyen pour définir plus simplement ce genre de
-fonction. Si vous placer le mot clé `new` avant un appel de fonction,
+fonction. Si vous placez le mot clé `new` avant un appel de fonction,
 la fonction est interprétée comme un constructeur. Cela signifie
 qu'un objet avec le prototype approprié est automatiquement produit et lié
 à la variable `this` dans la fonction puis renvoyé lorsque la fonction se
@@ -356,7 +356,7 @@ console.log(Object.getPrototypeOf(lapinBizarre) ==
 // → true
 ```
 
-## Notation Class
+## La notation: Class
 
 Ainsi les ((classe))s JavaScript sont les fonctions ((constructeur))s
 avec une propriété ((prototype)). C'est de cette façon qu'elles fonctionnent
@@ -369,7 +369,7 @@ class Lapin {
     this.type = type;
   }
   parler(blabla) {
-    console.log(`La lapin ${this.type} dit '${blabla}'`);
+    console.log(`Le lapin ${this.type} dit '${blabla}'`);
   }
 }
 
@@ -383,7 +383,7 @@ Le mot clé `class` débute une ((déclaration de classe)) qui permet de
 définir un constructeur et un ensemble de méthodes au même endroit.
 On peut écrire autant de méthodes que souhaitées entre les crochets de
 la déclaration. Celle qui est nommée `constructor`  joue un rôle particulier.
-Elle fournie la fonction constructeur effective et sera liée au nom (de classe)
+Elle fournit la fonction constructeur effective et sera liée au nom (de classe)
 `Lapin`. Les autres seront placées dans le prototype de ce constructeur.
 Ainsi, la déclaration de classe qui précède est équivalente à la définition
 du constructeur de la section précédente. Elle est juste plus agréable à lire.
@@ -393,7 +393,7 @@ du constructeur de la section précédente. Elle est juste plus agréable à lir
 Les déclarations de classe, pour l'instant, permettent seulement d'ajouter
 des _méthodes_—des propriétés associées à des valeurs fonctions—au ((prototype)).
 Cela n'est pas très pratique lorsqu'on veut stocker d'autre sortes
-de valeurs là dedans.
+de valeurs là-dedans.
 La prochaine version du langage devrait améliorer ce point. Pour l'instant,
 on peut créer de telles propriétés en manipulant directement le prototype après
 avoir défini la classe.
@@ -415,7 +415,7 @@ console.log(objet.obtenirMot());
 
 Lorsqu'on ajoute une propriété à un objet, qu'elle soit présente dans
 son prototype ou non, elle est ajoutée à l'objet _lui-même_.
-Si il y avait déjà une propriété de même nom dans son prototype,
+S'il y avait déjà une propriété de même nom dans son prototype,
 cette propriété n'affecte plus l'objet, elle est à présent masquée
 par la propriété ajoutée.
 
@@ -435,7 +435,7 @@ console.log(Lapin.prototype.dents);
 {{index [prototype, diagram]}}
 
 Le diagramme qui suit dépeint la situation après avoir exécuté cette portion
-de code. Les ((prototype))s de `Lapin` et `Object` sont en arrière plan de
+de code. Les ((prototype))s de `Lapin` et `Object` sont à l'arrière-plan de
 `lapinTueur` afin de fournir une valeur par défaut aux propriétés qui ne
 sont pas trouvées dans l'objet lui-même.
 
@@ -452,7 +452,7 @@ propriétés.
 {{index "toString method", "Array prototype", "Function prototype"}}
 
 La surcharge est aussi utilisée pour permettre aux prototypes des fonctions
-standards et des tableaux d'avoir une méthode `toString` plus adaptée à ces
+standard et des tableaux d'avoir une méthode `toString` plus adaptée à ces
 objets que celle du prototype de `Object`.
 
 ```
@@ -466,7 +466,7 @@ console.log([1, 2].toString());
 {{index "toString method", "join method", "call method"}}
 
 Appeler `toString` sur un tableau donne un résultat similaire à celui
-obtenu en appelant `.join(",")` dessus—cela place des virgules
+obtenu en appelant `.join(",")`—cela place des virgules
 entre les valeurs du tableau. Appeler directement `Object.prototype.toString`
 avec un tableau produit une chaîne différente. Cette fonction ne sait rien
 des tableaux, elle produit donc simplement le mot _object_ suivi du nom
@@ -515,13 +515,13 @@ console.log("Est-ce que l'âge de toString est connu?",
 Ici, les noms de propriétés de l'objet représentent des noms de gens et les
 valeurs associées leurs âges. Mais nous n'avons certainement
 pas voulu parler de l'âge de toString dans notre tableau associatif. Encore une fois,
-comme les objets dérive de `Object.prototype`, tout se passe comme si la propriété
+comme les objets dérivent de `Object.prototype`, tout se passe comme si la propriété
 était bien là. 
 
 {{index "Object.create function", prototype}}
 
 Aussi, utiliser des objets bruts comme des tableaux associatifs est
-dangereux. Il y a plusieurs moyens pour éviter ce problème. tout d'abord,
+dangereux. Il y a plusieurs moyens pour éviter ce problème. Tout d'abord,
 on peut créer des objets _sans_ prototype. Pour cela, il suffit de 
 passer `null` à `Object.create` et l'objet résultant ne dérive plus
 de `Object.prototype` ce qui lui permet d'être utilisé comme un tableau
@@ -534,7 +534,7 @@ console.log("toString" in Object.create(null));
 
 {{index [property, naming]}}
 
-Les noms de propriétés des objets doivent-être des chaînes. Si on a
+Les noms de propriétés des objets doivent être des chaînes. Si on a
 besoin d'un tableau associatif dont les clés ne peuvent être facilement
 converties en chaînes—comme des objets—on ne peut pas utiliser un objet
 comme tableau associatif.
@@ -542,7 +542,7 @@ comme tableau associatif.
 {{index "Map class"}}
 
 Bien heureusement, JavaScript fournit une classe `Map` qui a été conçue
-précisément pour cela. elle permet de créer des tableaux associatifs
+précisément pour cela. Elle permet de créer des tableaux associatifs
 dont les clés sont arbitraires.
 
 ```
@@ -590,7 +590,7 @@ console.log({x: 1}.hasOwnProperty("toString"));
 Lorqu'on invoque la fonction `String` (qui convertit une valeur en chaîne)
 sur un objet, elle va appeler la méthode `toString` sur cet objet
 afin d'essayer d'en obtenir une chaîne appropriée.
-J'ai déjà indiqué que certains des prototypes standards
+J'ai déjà indiqué que certains des prototypes standard
 définissent leur propre version de `toString` de façon à pouvoir produire
 une chaîne qui contient des informations plus utiles que `"[object Object]"`.
 On peut aussi le faire soi-même.
@@ -606,10 +606,10 @@ console.log(String(lapinNoir));
 
 {{index "object-oriented programming", [interface, object]}}
 
-Il s'agit d'une instance d'une idée puissante. Lorsqu'un morceau de code
+Il s'agit d'une idée puissante. Lorsqu'un morceau de code
 prévoit de travailler avec des objets qui disposent d'une certaine
 interface—dans ce cas, une méthode `toString`—n'importe quelle sorte
-d'objets qui supportent cet interface pourra être manipulé par ce code, sans
+d'objets qui supportent cette interface pourra être manipulée par ce code, sans
 qu'il cesse de fonctionner.
 
 Cette technique est appelée _polymorphisme_. Un code polymorphe peut travailler
@@ -628,11 +628,10 @@ notion de symbole.
 
 ## Symboles
 
-Différentes interfaces peuvent utilisées un même nom de propriété pour
+Différentes interfaces peuvent utiliser un même nom de propriété pour
 faire différentes choses. Par exemple, rien ne m'empêche de définir
 une interface dans laquelle la méthode `toString` serait supposée convertir
-un objet en un morceau de fil d'écosse. Il ne serait alors pas possible
-pour un objet de respecter cette interface et celle de l'utilisation
+un objet en un morceau de fil d'Écosse. Il ne serait alors pas possible pour un objet de respecter cette interface et celle de l'utilisation
 standard de `toString`.
 
 Ce serait une mauvaise idée, et ce problème n'est pas très courant.
@@ -657,14 +656,14 @@ console.log(lapinNoir[sym]);
 // → 55
 ```
 
-La chaîne passée à `Symbol` est retranscrite lorsqu'on converti
+La chaîne passée à `Symbol` est retranscrite lorsqu'on convertit
 un symbole en une chaîne de façon à pouvoir le reconnaître plus facilement
 lorsque, par exemple, on souhaite l'afficher dans la console. Mais elle
 n'a pas de signification particulière—plusieurs symboles peuvent avoir
 le même nom.
 
-Être à la fois unique et utilisable comme nom de propriétés permet
-aux symboles de définir des interfaces qui peuvent cohabitées pacifiquement
+Être à la fois unique et utilisable comme nom de propriété permet
+aux symboles de définir des interfaces qui peuvent cohabiter pacifiquement
 à côté d'autres propriétés sans avoir à se soucier de leurs noms.
 
 ```{includeCode: "top_lines: 1"}
@@ -682,8 +681,8 @@ console.log([1, 2][toStringSymbol]());
 {{index [property, naming]}}
 
 On peut inclure des noms symboliques de propriétés dans les expressions
-d'objets et de classe en les plaçant entre crochets. Cela a pour effet
-d'évaluer ces noms de propriétés, un peu comme l'accès au propriétés par
+d'objets et de classes en les plaçant entre crochets. Cela a pour effet
+d'évaluer ces noms de propriétés, un peu comme l'accès aux propriétés par
 l'intermédiaires des crochets, et nous permet de faire référence à la valeur
 associée au symbole.
 
@@ -709,15 +708,15 @@ une propriété de la fonction `Symbol`).
 Lorsqu'on l'appelle, cette méthode devrait renvoyer un objet qui implémente
 une deuxième interface, _iterator_. C'est cet objet qui gère effectivement
 l'itération. Pour cela, il doit disposer d'une méthode `next` qui renvoie le prochain
-résultat. Ce résultat devrait être un objet avec une propriété `value` qui fournie
+résultat. Ce résultat devrait être un objet avec une propriété `value` qui fournit
 la prochaine valeur, s'il y en a une, ainsi qu'une propriété `done` qui devrait
 être `true` lorsqu'il n'y a plus de valeur à parcourir et `false` autrement. 
 
 Remarquez que les noms de propriétés `next`, `value` et `done` sont des
 chaînes, non des symboles. Seul `Symbol.iterator`, qui sera probablement
-ajoutée à _beaucoup_ d'objets différents, est effectivement un symbole.
+ajouté à _beaucoup_ d'objets différents, est effectivement un symbole.
 
-On peut utiliser cette interface directement nous-même.
+On peut utiliser cette interface directement nous-mêmes.
 
 ```
 let okIterator = "OK"[Symbol.iterator]();
@@ -767,7 +766,7 @@ le troisième élément de la cinquième ligne est (en utilisant la numérotatio
 La fonction constructeur attend une largeur, une hauteur et une fonction optionnelle
 `element` qui sera utilisée pour remplir initialement le tableau.
 Il y a aussi deux méthodes `get` et `set` afin de récupérer et de mettre
-à jour les éléménts de la matrice.
+à jour les éléments de la matrice.
 
 Lorsqu'on parcourt une matrice, on souhaite souvent récupérer aussi bien
 la valeur de l'élément courant que sa position, aussi notre itérateur
@@ -842,7 +841,7 @@ pas à des valeurs-fonctions. Par exemple, les objets `Map` ont une
 propriété `size` qui donne le nombre de clés d'un tel objet.
 
 Il n'est pas même nécessaire pour un tel objet de stocker effectivement
-la valeur d'une telle propriété dans l'instance. Même les propriétés auxquels
+la valeur d'une telle propriété dans l'instance. Même les propriétés auxquelles
 on accède directement peuvent induire un appel à une méthode. Ces méthodes
 sont ce qu'on appelle des _((getter))s_ et elles sont définies en précédant
 le nom de méthode par le mot clé `get` dans une expression d'objet ou dans
@@ -893,7 +892,7 @@ console.log(temp.celsius);
 ```
 
 La classe `Temperature` nous permet de lire et d'écrire la température
-aussi bien en degrés ((Celsius)) qu'en degré ((Fahrenheit)), mais en interne
+aussi bien en degrés ((Celsius)) qu'en degrés ((Fahrenheit)), mais en interne
 la température n'est stockée qu'en Celsius tout en étant automatiquement
 convertie lorsqu'on lit ou modifie la propriété `fahrenheit`.
 
@@ -976,7 +975,7 @@ cette fois, mais pour appeler une méthode spécifique parmi l'ensemble de celle
 de la classe mère. Nous redéfinissons `set` tout en souhaitant réutiliser
 le comportement initial. Comme `this.set` fait référence à la _nouvelle_
 méthode `set`, l'appeler ne fonctionnerait pas. À l'intérieur d'une méthode
-d'une classe, `super` fourni un moyen d'invoquer une méthode qui a été
+d'une classe, `super` fournit un moyen d'invoquer une méthode qui a été
 définie dans la classe mère. 
 
 L'héritage nous permet, à peu de frais, de construire des structures de données
@@ -998,14 +997,14 @@ pour pouvoir l'utiliser simplement. L'héritage peut être un outil très
 utile, je l'utilise ici et là dans mes propres programmes. Mais
 ce ne devrait pas être la première technique à considérer pour un problème donné,
 et il vaudrait mieux éviter de rechercher activement des opportunités
-de construire des hiérarchie de classes (des familles arborescentes de classes).
+de construire des hiérarchies de classes (des familles arborescentes de classes).
 
 ## Opérateur instanceof
 
 {{index type, "instanceof operator", constructor, object}}
 
 Il est parfois intéressant de savoir si un objet a été dérivé d'une classe
-spécifique. Pour cela, JavaScript fourni l'opérateur binaire `instanceof`.
+spécifique. Pour cela, JavaScript fournit l'opérateur binaire `instanceof`.
 
 ```
 console.log(
@@ -1021,21 +1020,21 @@ console.log([1] instanceof Array);
 
 {{index inheritance}}
 
-L'opérateur remonte la hiérachie des types, ce qui explique qu'une
+L'opérateur remonte la hiérarchie des types, ce qui explique qu'une
 `MatriceSym` est aussi une instance de `Matrice`. L'opérateur peut
-aussi être appliqué aux constructeurs standards comme `Array`. Presque
+aussi être appliqué aux constructeurs standard comme `Array`. Presque
 tous les objets sont des instances d'`Object`.
 
 ## Résumé
 
-Ainsi, les objets font plus que de simplement regrouper leur propres
+Ainsi, les objets font plus que simplement regrouper leur propres
 propriétés. Ils ont des prototypes qui sont d'autres objets et
 se comportent comme s'ils avaient directement les propriétés de leur
-prototype, et celles du prototype de celui-ci etc. Les objets simples
+prototype, et celles du prototype de celui-ci, etc. Les objets simples
 ont `Object.prototype` pour prototype.
 
-Les constructeurs, des fonctions dont le nom débute
-ordinairement par une majuscule, peuvent-être utilisés avec l'opérateur
+Les constructeurs—des fonctions dont le nom débute
+ordinairement par une majuscule—peuvent être utilisés avec l'opérateur
 `new` pour créer de nouveaux objets. Ces nouveaux objets auront pour
 prototype l'objet associé à la propriété `prototype` de leur constructeur.
 On peut mettre cela à profit pour permettre à des objets d'un même type de
@@ -1049,7 +1048,7 @@ en écriture à certaines propriétés de l'objet.
 Les méthodes statiques sont des méthodes stockées sur le constructeur
 de la classe plutôt que sur son prototype.
 
-Étant donné un objet et un constructeur, l'opérateur `instanceof` indique
+Étant donnés un objet et un constructeur, l'opérateur `instanceof` indique
 si l'objet est une instance de ce constructeur.
 
 Une chose intéressante à faire avec des objets est de les munir d'une
@@ -1059,7 +1058,7 @@ effectivement ces objets sont alors encapsulés, cachés derrière l'interface.
 
 Plus d'un type peut proposer la même interface. Du code écrit pour
 utiliser une interface particulière sait automatiquement comment
-travailler avec nombres d'objets différents qui respectent cette
+travailler avec nombre d'objets différents qui respectent cette
 interface. On appelle cela le _polymorphisme_.
 
 Lorsqu'on implémente plusieurs classes qui ne diffèrent que par
@@ -1071,7 +1070,7 @@ d'une partie de son comportement.
 
 {{id exercise_vector}}
 
-### A vector type
+### Un type Vecteur
 
 {{index dimensions, "Vec class", coordinates, "vector (exercise)"}}
 
@@ -1082,9 +1081,9 @@ Construire un vecteur demande deux paramètres `x` et `y` (nombres) qui devraien
 {{index addition, subtraction}}
 
 Donner au prototype de `Vec` deux méthodes, `plus` et `moins`, lesquelles
-attendent un autre vecteur en argument et renvoie un nouveau vecteur dont
+attendent un autre vecteur en argument et renvoient un nouveau vecteur dont
 les coordonnées sont obtenues en faisant la somme ou la différence
-des coordonnées _x_ et _y_ des deux vecteurs (`this` et celui fournit en argument) 
+des coordonnées _x_ et _y_ des deux vecteurs (`this` et celui fourni en argument).
 
 Ajouter un getter `norme`, au prototype, qui calcule la longueur
 du vecteur—c'est-à-dire, la distance du point (_x_, _y_) à l'origine (0, 0). 
@@ -1131,7 +1130,7 @@ L'environnement standard de JavaScript fournit encore une autre structure
 de données appelée `Set` (ensemble). De la même manière qu'une instance
 de `Map`, un ensemble est une collection de valeurs. À la différence de
 `Map`, il n'associe pas d'autres valeurs à celles-ci—il se contente de
-surveiller si une valeurs fait ou non partie de l'ensemble. Une valeur ne peut
+surveiller si une valeur fait ou non partie de l'ensemble. Une valeur ne peut
 faire partie d'un ensemble qu'une fois—l'ajouter à nouveau n'a aucun
 effet.
 
@@ -1141,7 +1140,7 @@ effet.
 `ajouter` (_add_), `supprimer` (_delete_) et `contient` (_has_).
 Son constructeur produit un ensemble vide, `ajouter` ajoute une valeur à
 l'ensemble (mais seulement si cette valeur ne s'y trouve pas déjà),
-`supprimer` supprime son argument de l'ensemble (si il y était) et
+`supprimer` supprime son argument de l'ensemble (s'il y était) et
 `contient` renvoie un booléen qui indique si son argument est un élément
 de l'ensemble.
 
@@ -1182,7 +1181,7 @@ if}}
 
 La façon la plus simple de faire cela est de ranger les éléments
 de l'ensemble dans un tableau associé à une propriété de l'instance.
-Les méthodes de tableux `includes` ou `indexOf` peuvent être utilisées
+Les méthodes de tableaux `includes` ou `indexOf` peuvent être utilisées
 pour vérifier si une valeur donnée se trouve déjà dans le tableau.
 
 {{index "push method"}}
@@ -1202,7 +1201,7 @@ tableau de façon à la faire pointer sur celui obtenu après filtrage.
 {{index "for/of loop", "iterable interface"}}
 
 La méthode statique `depuis` peut utiliser une boucle `for`/`of` pour parcourir
-les valeurs de l'objets itérable et appeler `ajouter` pour les insérer
+les valeurs de l'objet itérable et appeler `ajouter` pour les insérer
 dans le nouvel ensemble.
 
 hint}}
@@ -1248,7 +1247,7 @@ Il est probablement préférable de définir une nouvelle classe
 `IterateurPourEnsemble`. Ses instances devraient avoir une propriété
 pour suivre la position courante dans l'ensemble.
 À chaque fois que `next` est appelée, elle
-vérifie si le parcourt est terminé et, sinon, déplace la position
+vérifie si le parcours est terminé et, sinon, déplace la position
 après celle de la valeur courante tout en renvoyant celle-ci.
 
 La classe `Ensemble` elle-même dispose d'une méthode dont le nom
@@ -1260,10 +1259,10 @@ hint}}
 ### Emprunter une méthode
 
 Plus tôt dans le chapitre, j'ai indiqué que la méthode `hasOwnProperty`
-d'un objet pouvait être utilisé comme une alternative à l'opérateur `in`
+d'un objet pouvait être utilisée comme une alternative à l'opérateur `in`
 lorsqu'on souhaite ne pas prendre en compte les propriétés de son prototype.
 Mais comment faire si on souhaite utiliser `"hasOwnProperty"` comme nom
-de propriété? vous ne serez plus en mesure d'appeler cette méthode à nouveau
+de propriété? Vous ne serez plus en mesure d'appeler cette méthode à nouveau
 puisque la propriété va empêcher l'accès à cette méthode.
 
 Voyez-vous un moyen d'invoquer `hasOwnProperty` sur un objet qui possède
@@ -1283,7 +1282,7 @@ if}}
 
 {{hint
 
-Souvenez-vous que les méthodes qui pré-existent sur des objets simples
+Souvenez-vous que les méthodes qui préexistent sur des objets simples
 proviennent de `Object.prototype`.
 
 Souvenez-vous aussi que vous pouvez appeler une fonction avec une
