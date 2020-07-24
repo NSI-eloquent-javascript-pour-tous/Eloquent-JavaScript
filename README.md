@@ -7,7 +7,7 @@
 | 4. Data Structures: Objects and Arrays | efloti - fait|              |
 | 5. Higher-order Functions              | efloti - fait|              |
 | 6. The Secret Life of Objects          | efloti - fait|              |
-| 7. Project: A Robot                    | efloti             |              |
+| 7. Project: A Robot                    | efloti - fait|              |
 | 8. Bugs and Errors                     |              |              |
 | 9. Regular Expressions                 |              |              |
 | 10. Modules                            |              |              |
